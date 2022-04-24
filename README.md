@@ -1,5 +1,6 @@
 # DepositsApp
 
+Example of dropwizard 2.x, gradle 7.x, Java 17.x 
 How to start the DepositsApp application
 ---
 
