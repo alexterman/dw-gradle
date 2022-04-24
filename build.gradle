@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'application'
+}
+
+group 'com.fin.bank'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = 'com.fin.bank.DepositsAppApplication'
+
+//shadowJar {
+//    mergeServiceFiles()
+//}
+
+run {
+    args = ["server", "config.yml"]
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation("io.dropwizard:dropwizard-testing:$dropwizardVersion")
+    implementation("io.dropwizard:dropwizard-core:$dropwizardVersion")
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.5'
+
+    implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '2.0.2'
+
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.1.7.Final'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                   'Implementation-Version': project.version)
+    }
+}
+
+

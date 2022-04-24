@@ -1,0 +1,12 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 1000
+  adminConnectors:
+    - type: http
+      port: 1001
+
+logging:
+  level: INFO
+  loggers:
+    com.fin.bank: DEBUG

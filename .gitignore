@@ -1,0 +1,14 @@
+### IntelliJ IDEA ###
+/.idea
+/out
+/*/out
+*.iws
+*.iml
+*.ipr
+
+### Gradle ###
+/build
+/*/build
+/.gradletasknamecache
+/.gradle
+.jacoco
