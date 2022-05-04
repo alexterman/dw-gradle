@@ -1,6 +1,6 @@
 # DepositsApp
 
-Example of dropwizard 2.x, gradle 7.x, Java 17.x 
+Example of dropwizard 2.x, gradle 7.x, Java 17.x and Swagger
 How to start the DepositsApp application
 ---
 
