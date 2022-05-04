@@ -10,3 +10,6 @@ logging:
   level: INFO
   loggers:
     com.fin.bank: DEBUG
+
+swagger:
+  resourcePackage: com.fin.bank.resources

@@ -4,6 +4,8 @@ import com.fin.bank.resources.DepositsResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.federecio.dropwizard.swagger.SwaggerBundle;
+import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 
 public class DepositsAppApplication extends Application<DepositsAppConfiguration> {
 
@@ -18,7 +20,12 @@ public class DepositsAppApplication extends Application<DepositsAppConfiguration
 
     @Override
     public void initialize(final Bootstrap<DepositsAppConfiguration> bootstrap) {
-        // TODO: application initialization
+        bootstrap.addBundle(new SwaggerBundle<DepositsAppConfiguration>() {
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(DepositsAppConfiguration configuration) {
+                return configuration.swaggerBundleConfiguration;
+            }
+        });
     }
 
     @Override
