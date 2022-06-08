@@ -1,4 +1,4 @@
-package com.fin.bank.api;
+package com.fin.bank.api.ping;
 
 import lombok.AllArgsConstructor;
 
@@ -6,5 +6,5 @@ import lombok.AllArgsConstructor;
 public class PingResponse {
 
     public String id;
-    public Status status;
+    public PingStatus status;
 }

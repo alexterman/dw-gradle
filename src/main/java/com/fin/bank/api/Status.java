@@ -1,5 +1,5 @@
 package com.fin.bank.api;
 
 public enum Status {
-    PONG, NO_PONG, INTERNAL_ERROR
+    NO_PONG, CLIENT_ERROR, INTERNAL_ERROR
 }

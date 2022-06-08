@@ -1,5 +1,9 @@
 package com.fin.bank;
 
+import com.fin.bank.core.DepositService;
+import com.fin.bank.core.exceptions.DepositsExceptionMapper;
+import com.fin.bank.health.DepositHealthCheck;
+import com.fin.bank.resources.DepositsHealthResource;
 import com.fin.bank.resources.DepositsResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -20,7 +24,7 @@ public class DepositsAppApplication extends Application<DepositsAppConfiguration
 
     @Override
     public void initialize(final Bootstrap<DepositsAppConfiguration> bootstrap) {
-        bootstrap.addBundle(new SwaggerBundle<DepositsAppConfiguration>() {
+        bootstrap.addBundle(new SwaggerBundle<>() {
             @Override
             protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(DepositsAppConfiguration configuration) {
                 return configuration.swaggerBundleConfiguration;
@@ -31,7 +35,10 @@ public class DepositsAppApplication extends Application<DepositsAppConfiguration
     @Override
     public void run(final DepositsAppConfiguration configuration,
                     final Environment environment) {
-        environment.jersey().register(DepositsResource.class);
+        environment.jersey().register(new DepositsHealthResource(environment.healthChecks()));
+        environment.jersey().register(new DepositsResource(new DepositService()));
+        environment.healthChecks().register("deposit", new DepositHealthCheck());
+        environment.jersey().register(new DepositsExceptionMapper(environment.metrics()));
     }
 
 }
